@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:4200',
+# ]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework_jwt',
+    'corsheaders',
 
     'blog',
 ]
@@ -48,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -87,6 +94,10 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'toni1o00',
         'HOST': 'localhost',
+        # 'HOST': '192.168.97.46', # The Steps
+        # 'HOST': '192.168.100.251',  # Home Sofia,
+        # 'HOST': '192.168.1.8',  # Tutto e Troppo,
+        # 'HOST': '192.168.0.127',  # Joansa's Home
         'PORT': '5432',
     }
 }
@@ -160,7 +171,6 @@ REST_FRAMEWORK = {
     # 'rest_framework.parsers.MultiPartParser'
     # ]
 }
-
 
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':

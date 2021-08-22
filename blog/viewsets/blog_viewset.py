@@ -25,7 +25,8 @@ class BlogViewSet(SerializerRequestSwitchMixin, ModelViewSet):
     parser_classes = [JSONParser, FormParser, MultiPartParser]
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
 
-    search_fields = ('topic',)
+    search_fields = ('topic', 'title')
+    filterset_fields = ['author', ]
     ordering_fields = ''
     ordering = '-id'
 

@@ -7,7 +7,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=100, blank=False)
 
     image = models.ImageField(upload_to='blog-photos', blank=True)
-    content = models.TextField(max_length=3000, blank=False)
+    content = models.TextField(blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     created_at = models.DateField(auto_now_add=True)
