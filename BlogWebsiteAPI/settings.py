@@ -161,6 +161,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
 
+    'EXCEPTION_HANDLER': 'blog.utils.custom_exception_handler',
+
     # Setting default pagination class that will appear on every list-view
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.CursorPagination',
     # 'PAGE_SIZE': 3,

@@ -1,7 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.parsers import FormParser, MultiPartParser, JSONParser, FileUploadParser
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from blog.mixins import SerializerRequestSwitchMixin
@@ -34,3 +36,8 @@ class BlogViewSet(SerializerRequestSwitchMixin, ModelViewSet):
         user = request.user
         request.data['author'] = user.pk
         return super().create(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        user = request.user
+        request.data['author'] = user.pk
+        return super().update(request, *args, **kwargs)
