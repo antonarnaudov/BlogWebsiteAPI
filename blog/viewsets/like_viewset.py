@@ -1,5 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import status
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from blog.mixins import SerializerRequestSwitchMixin
 
@@ -19,8 +21,9 @@ class LikeViewSet(SerializerRequestSwitchMixin, ModelViewSet):
     }
 
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
-    search_fields = ('blog__topic',)
+    search_fields = ('blog__topic', 'blog__title')
     ordering_fields = ''
+    filterset_fields = ['blog__id', ]
     ordering = '-blog_id'
 
     def get_queryset(self):
@@ -37,6 +40,6 @@ class LikeViewSet(SerializerRequestSwitchMixin, ModelViewSet):
 
         if like.exists():
             like.delete()
-            return super().list(request, args, **kwargs)
+            return Response('', status=status.HTTP_200_OK)
 
         return super().create(request, *args, **kwargs)

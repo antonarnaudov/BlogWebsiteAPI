@@ -28,7 +28,7 @@ class BlogViewSet(SerializerRequestSwitchMixin, ModelViewSet):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
 
     search_fields = ('topic', 'title')
-    filterset_fields = ['author', ]
+    filterset_fields = ['author__username', ]
     ordering_fields = ''
     ordering = '-id'
 
@@ -41,3 +41,4 @@ class BlogViewSet(SerializerRequestSwitchMixin, ModelViewSet):
         user = request.user
         request.data['author'] = user.pk
         return super().update(request, *args, **kwargs)
+    
