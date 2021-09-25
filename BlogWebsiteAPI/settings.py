@@ -94,11 +94,10 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'toni1o00',
         'HOST': 'localhost',
-        # 'HOST': '192.168.97.46', # The Steps
-        # 'HOST': '192.168.100.251',  # Home Sofia,
-        # 'HOST': '192.168.1.8',  # Tutto e Troppo,
-        # 'HOST': '192.168.0.127',  # Joansa's Home
         'PORT': '5432',
+        'TEST': {
+            'NAME': 'blog-website-test-db'
+        }
     }
 }
 

@@ -22,7 +22,7 @@ class UserViewSet(SerializerRequestSwitchMixin, ModelViewSet):
 
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
 
-    search_fields = ('username', )
+    search_fields = ('username',)
     ordering_fields = ''
     ordering = 'id'
 

@@ -39,7 +39,6 @@ schema_view = get_schema_view(
 
 media_files = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', index_page, name='index page'),
